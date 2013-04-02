@@ -72,6 +72,26 @@ end tell</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"
+set adium to load script POSIX file (workflowFolder &amp; "/adium.scpt")
+
+tell adium
+	startChat("{query}")
+end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3CDB7E03-507A-481D-A59A-350AA18339B3</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -119,26 +139,6 @@ end tell</string>
 			<key>uid</key>
 			<string>F6088F8F-B75D-49E5-A9C1-191AE8485ABE</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>62</integer>
-				<key>script</key>
-				<string>set workflowFolder to do shell script "pwd"
-set adium to load script POSIX file (workflowFolder &amp; "/adium.scpt")
-
-tell adium
-	startChat("{query}")
-end tell</string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3CDB7E03-507A-481D-A59A-350AA18339B3</string>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -166,6 +166,6 @@ end tell</string>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>http://adiumactions.reigndropsfall.net</string>
 </dict>
 </plist>

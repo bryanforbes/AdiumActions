@@ -1,0 +1,4 @@
+{
+	"version": "{VERSION}",
+	"remote_json": "http://adiumactions.reigndropsfall.net/latest.json"
+}

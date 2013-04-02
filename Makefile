@@ -1,18 +1,34 @@
-EXTENSION_FILES = adium.scpt icon.png info.plist
-EXTENSION = AdiumActions.alfredextension
+VERSION = 0.91
+WORKFLOW = AdiumActions-$(VERSION).alfredworkflow
+WORKFLOW_FILES = adium.scpt icon.png info.plist update.json
+DISTFILES = $(WORKFLOW) latest.json index.html
+CLEANFILES = adium.scpt update.json
+DISTCLEANFILES = $(CLEANFILES) $(DISTFILES)
+VERSION_SUB = sed -e "s/{VERSION}/$(VERSION)/g"
 
-all: $(EXTENSION)
+all: $(WORKFLOW_FILES)
+
+clean:
+	rm -f $(CLEANFILES)
+
+dist: $(DISTFILES)
+
+distclean:
+	rm -f $(DISTCLEANFILES)
 
 adium.scpt:
 	osacompile -o $@ adium.applescript
 
-$(EXTENSION): $(EXTENSION_FILES)
+%.html: %.html.in
+	$(VERSION_SUB) $^ > $@
+
+%.json: %.json.in
+	$(VERSION_SUB) $^ > $@
+
+$(WORKFLOW): $(WORKFLOW_FILES)
 	zip -q $@ $^
 
-clean:
-	rm -f adium.scpt $(EXTENSION)
-
-install: $(EXTENSION)
+install: $(WORKFLOW)
 	open $<
 
-.PHONY: all clean install
+.PHONY: all clean dist distclean install
