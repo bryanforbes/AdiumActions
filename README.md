@@ -1,6 +1,6 @@
 # AdiumActions
 
-This is the repository for my Adium workflow for Alfred 2. The latest version can be [downloaded here](http://adiumactions.reigndropsfall.net/AdiumActions-0.91.adiumworkflow).
+This is the repository for my Adium workflow for Alfred 2. The latest version can be [downloaded here](http://adiumactions.reigndropsfall.net/AdiumActions-0.91.alfredworkflow).
 
 # Actions
 
