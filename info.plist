@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>AdiumActions</string>
+	<key>connections</key>
+	<dict>
+		<key>43FC1F20-B33A-4F4D-88E6-C11B706E1412</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3CDB7E03-507A-481D-A59A-350AA18339B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>60DE32D4-5693-4358-AD7D-2E3EB9B67A76</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F6088F8F-B75D-49E5-A9C1-191AE8485ABE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Bryan Forbes</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Adium Actions</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>keyword</key>
+				<string>status</string>
+				<key>runningsubtext</key>
+				<string>Getting statuses...</string>
+				<key>script</key>
+				<string>set workflowfolder to do shell script "pwd"
+set adium to (load script POSIX file (workflowfolder &amp; "/adium.scpt"))
+
+tell adium
+	return getStatuses("{query}")
+end tell</string>
+				<key>title</key>
+				<string>Set Adium status</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>60DE32D4-5693-4358-AD7D-2E3EB9B67A76</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>keyword</key>
+				<string>chat</string>
+				<key>runningsubtext</key>
+				<string>Finding contacts...</string>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"
+set adium to load script POSIX file (workflowFolder &amp; "/adium.scpt")
+
+tell adium
+	return getContacts("{query}")
+end tell</string>
+				<key>title</key>
+				<string>Start a chat</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>43FC1F20-B33A-4F4D-88E6-C11B706E1412</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"
+set adium to load script POSIX file (workflowFolder &amp; "/adium.scpt")
+
+tell adium
+	setStatus("{query}")
+end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F6088F8F-B75D-49E5-A9C1-191AE8485ABE</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"
+set adium to load script POSIX file (workflowFolder &amp; "/adium.scpt")
+
+tell adium
+	startChat("{query}")
+end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3CDB7E03-507A-481D-A59A-350AA18339B3</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>3CDB7E03-507A-481D-A59A-350AA18339B3</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>43FC1F20-B33A-4F4D-88E6-C11B706E1412</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>60DE32D4-5693-4358-AD7D-2E3EB9B67A76</key>
+		<dict>
+			<key>ypos</key>
+			<real>20</real>
+		</dict>
+		<key>F6088F8F-B75D-49E5-A9C1-191AE8485ABE</key>
+		<dict>
+			<key>ypos</key>
+			<real>20</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
