@@ -1,32 +1,38 @@
-on outputXML(theItems)
-	set outputText to "<?xml version='1.0'?><items>"
-	repeat with theItem in every record of theItems
-		set outputText to outputText & "
-	<item uid='" & (uid of theItem) & "' arg='" & (arg of theItem) & "' valid='yes'>
-		<title>" & (theTitle of theItem) & "</title>
-		<subtitle>" & (subtitle of theItem) & "</subtitle>
-	</item>"
-	end repeat
-	set outputText to outputText & "
-</items>"
+script ResultXml
+	to create()
+		script ResultXmlInstance
+			property parent : ResultXml
+			property bodyText : ""
+		end script
+	end create
 	
-	return outputText
-end outputXML
+	on append(uid, arg, title, subtitle)
+		set my bodyText to my bodyText & "
+	<item uid='" & uid & "' arg='" & arg & "' valid='yes'>
+		<title>" & title & "</title>
+		<subtitle>" & subtitle & "</subtitle>
+	</item>"
+	end append
+	
+	on output()
+		return "<?xml version='1.0'?><items>" & my bodyText & "
+</items>"
+	end output
+end script
 
 on getContacts(theQuery)
-	set theContacts to {}
+	set theXml to ResultXml's create()
 	
 	if length of theQuery > 2 then
 		tell application "Adium"
 			repeat with theContact in (every contact whose status type is not offline and display name starts with theQuery)
 				set {theId, theTitle, theSubtitle} to {id, display name, name} of theContact
-				
-				copy {uid:theId, arg:theId, theTitle:theTitle, subtitle:theSubtitle} to the end of theContacts
+				tell theXml to append(theId, theId, theTitle, theSubtitle)
 			end repeat
 		end tell
 	end if
 	
-	return outputXML(theContacts)
+	return theXml's output()
 end getContacts
 
 on startChat(theQuery)
@@ -48,18 +54,18 @@ on startChat(theQuery)
 end startChat
 
 on getStatuses(theQuery)
-	set theStatuses to {}
+	set theXml to ResultXml's create()
 	
 	tell application "Adium"
 		repeat with theStatus in every status
 			set {theTitle, theMessage, theId} to {title, status message, id} of theStatus
 			if (theQuery is "") or (theTitle starts with theQuery) then
-				copy {uid:theId, arg:theId, theTitle:theTitle, subtitle:theMessage} to the end of theStatuses
+				tell theXml to append(theId, theId, theTitle, theMessage)
 			end if
 		end repeat
 	end tell
 	
-	return outputXML(theStatuses)
+	return theXml's output()
 end getStatuses
 
 on setStatus(theQuery)
