@@ -1,5 +1,5 @@
 {
 	"version": "{VERSION}",
-	"download_uri": "http://adiumactions.reigndropsfall.net/AdiumActions-{VERSION}.alfredworkflow",
+	"download_url": "http://adiumactions.reigndropsfall.net/AdiumActions-{VERSION}.alfredworkflow",
 	"description": "A description"
 }
