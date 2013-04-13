@@ -1,4 +1,4 @@
-VERSION = 0.91
+VERSION = 0.92
 WORKFLOW = AdiumActions-$(VERSION).alfredworkflow
 WORKFLOW_FILES = adium.scpt icon.png info.plist update.json
 DISTFILES = $(WORKFLOW) latest.json index.html
